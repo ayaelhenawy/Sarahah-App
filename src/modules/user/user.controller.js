@@ -9,6 +9,14 @@ const signup=async(req,res)=>{
     sendEmails(req.body.email);
     res.json({message:"success"});
 }
+const signin=async(req,res)=>{
+    let user =await userModel.findOne({email:req.body.email});
+    if(user&&bcrypt.compareSync(req.body.password,user.password)){
+        let token = jwt.sign({userId:user._id,email:req.body.email},'aya');
+        res.json({message:"success",token});
+    }
+    else res.json({message:"Incorrect email or Pssword"});
+}
 
 const verifyEmail=async(req,res)=>{
     await jwt.verify(req.params.token,'ayaalaa',async (err,decoded)=>{
@@ -22,5 +30,5 @@ const verifyEmail=async(req,res)=>{
 
 
 export{
-    signup,verifyEmail
+    signup,verifyEmail,signin
 }
