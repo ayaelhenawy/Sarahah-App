@@ -15,6 +15,7 @@ const signin=async(req,res)=>{
         let token = jwt.sign({userId:user._id,email:req.body.email},'aya');
         res.json({message:"success",token});
     }
+
     else res.json({message:"Incorrect email or Pssword"});
 }
 
