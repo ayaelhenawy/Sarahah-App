@@ -13,10 +13,12 @@ app.use(msgRouter)
 
 
 dbConnections();
-
+app.use('*',(req,res,next)=>{
+    next(new Error(`Not Found endpoint ${req.originalUrl}`));
+})
 
 app.use((err,req,res,next)=>{
-    res.json({error:err});
+    res.json({error:err.message});
 })
 // العمده
 // دي  middleware  تلاقي هتيجي لل   error  اللي جواها اول متشوف next  ال  catchError  هنا وحدت الريسبونس ال ال فانكشن اللي اسمها    
