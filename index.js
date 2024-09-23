@@ -1,3 +1,8 @@
+process.on('uncaughtException',(err)=>{
+    console.log("error",err)
+})
+
+
 import express from 'express'
 import { dbConnections } from './Database/dbconnection.js';
 import { userRouter } from './src/modules/user/user.router.js';
@@ -23,4 +28,7 @@ app.use(globalErrorMiddleware)
 // العمده
 // دي  middleware  تلاقي هتيجي لل   error  اللي جواها اول متشوف next  ال  catchError  هنا وحدت الريسبونس ال ال فانكشن اللي اسمها    
 
+process.on('unhandledRejection',(err)=>{
+    console.log('error');
+})
 app.listen(port, () => console.log(`server is running... `))
