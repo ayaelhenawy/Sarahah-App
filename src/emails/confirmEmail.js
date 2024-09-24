@@ -11,7 +11,7 @@ const transporter = await createTransport({
     pass: "lagcwnjyjgybydbc",
     },
 });
-let token =jwt.sign({email},'ayaalaa');
+let token =jwt.sign({email},process.env.JWT_KEY);
 const info = await transporter.sendMail({
     from: '<ayaalaaelhenawy@gmail.com>', 
     to: email, 

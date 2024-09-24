@@ -1,5 +1,6 @@
 import { userModel } from "../../Database/models/user.model.js"
-import { AppError } from "../AppError.js";
+import { AppError } from "../utilts/appError.js";
+
 
 
 

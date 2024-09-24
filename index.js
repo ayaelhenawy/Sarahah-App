@@ -7,8 +7,10 @@ import express from 'express'
 import { dbConnections } from './Database/dbconnection.js';
 import { userRouter } from './src/modules/user/user.router.js';
 import { msgRouter } from './src/modules/message/msg.router.js';
-import { AppError } from './src/AppError.js';
+import dotenv from "dotenv"
 import { globalErrorMiddleware } from './src/middleware/globalErrorMiddleware.js';
+import { AppError } from './src/utilts/appError.js';
+dotenv.config()
 const port = 3000
 const app = express()
 

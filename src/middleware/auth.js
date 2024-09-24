@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
-import { AppError } from '../AppError.js';
+import { AppError } from '../utilts/appError.js';
+
 
 export const auth =async(req,res,next)=>{
     let token =req.header('token');
