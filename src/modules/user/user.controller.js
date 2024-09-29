@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken'
 import { catchError } from "../../middleware/catchGlobalError.js";
 import { AppError } from "../../utilts/appError.js";
 
+import Joi from "joi"
 
 
 
@@ -36,6 +37,9 @@ const verifyEmail=catchError(async(req,res,next)=>{
         }
     })
 })
+
+
+
 
 
 export{
