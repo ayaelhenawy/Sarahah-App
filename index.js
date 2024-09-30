@@ -47,6 +47,11 @@ app.post('/photos',upload.single('img'),async(req,res)=>{
     await photoModel.insertMany(req.body);
     res.json({message:"success"})
 })
+app.use('/',express.static('uploads'))
+app.get('/photos',upload.single('img'),async(req,res)=>{
+    let photos=await photoModel.find();
+    res.json({message:"success",photos})
+})
 
 
 dbConnections();
